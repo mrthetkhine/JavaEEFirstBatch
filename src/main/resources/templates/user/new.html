@@ -3,13 +3,33 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>User</title>
+<style>
+.validationError
+{
+	color:red;
+}
+</style>
 </head>
 <body>
 	<h1>New User</h1>
 	<form method="POST" th:object="${user}">
-	  <p>Name: <input type="text" th:field="*{name}" th:value="${user.name}"></span>.</p>
-	  <p>Email: <input  type="text" th:field="*{email}"  th:value="${email}"></span>.</p>
-		
+	  <p>Name: <input type="text" th:field="*{name}" th:value="${user.name}"></span>.
+	  <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"></span>
+     	</p>
+	  </p>
+	  <p>Email: <input  type="text" th:field="*{email}"  th:value="${email}"></span>.
+	  <span class="validationError"
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"></span>
+     	</p>
+	  </p>
+	  Gender <select th:field="*{gender}">
+	    <option th:value="'M'" th:text="Male"></option>
+	    <option th:value="'F'" th:text="Female"></option>
+	</select>
+		</p>
 		<button type="submit">Submit</button>
 	</form>
 </body>
