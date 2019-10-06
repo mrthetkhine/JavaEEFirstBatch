@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,15 @@ public class UserController {
 
 	@Autowired
 	private  UserRepository userRepository;
+	@GetMapping("/list")
+	String userList(Model model){
+		
+		Iterable<User> users = this.userRepository.findAll();
+		model.addAttribute("users", users);
+		
+		System.out.println("User List Controller");
+		return "user/users";
+	}
 	
 	@GetMapping("/new")
 	public String newUser(Model model)
@@ -42,12 +54,8 @@ public class UserController {
 		else
 		{
 			userRepository.save(user);
+			return "redirect:/user/list";
 		}
-		System.out.println("User name "+user.getName());
-		System.out.println("User email "+user.getEmail());
-		System.out.println("User gender "+user.getGender());
-		//model.addAttribute("user", newUser);
 		
-		return "user/new";
 	}
 }
