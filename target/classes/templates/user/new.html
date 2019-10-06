@@ -12,7 +12,8 @@
 </head>
 <body>
 	<h1>New User</h1>
-	<form method="POST" th:object="${user}">
+	<form method="POST" th:object="${user}" action="/user/new">
+		<input type="hidden" th:field="*{id}" th:value="${user.id}">
 	  <p>Name: <input type="text" th:field="*{name}" th:value="${user.name}"></span>.
 	  <span class="validationError"
               th:if="${#fields.hasErrors('name')}"

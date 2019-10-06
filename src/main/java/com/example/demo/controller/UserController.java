@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -43,6 +44,15 @@ public class UserController {
 		
 		return "user/new";
 	}
+	@GetMapping("/edit/{id}")
+	public String editUser(@PathVariable Long id,Model model)
+	{
+		User newUser = this.userRepository.findOne(id);
+		model.addAttribute("user", newUser);
+		
+		return "user/new";
+		
+	}
 	@PostMapping("/new")
 	public String createUser(@Valid User user,Errors errors)
 	{
@@ -53,7 +63,15 @@ public class UserController {
 		}
 		else
 		{
-			userRepository.save(user);
+			if( user.getId() != null)
+			{
+				userRepository.update(user);
+			}
+			else
+			{
+				userRepository.save(user);
+			}
+			
 			return "redirect:/user/list";
 		}
 		

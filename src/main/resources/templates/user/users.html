@@ -13,6 +13,7 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Gender</th>
+				<th> Action</th>
 			</tr>
 		</thead>
 		<tr th:each="user: ${users}">
@@ -20,7 +21,9 @@
 		  <td><span th:text="${user.name}"></span></td>
 		  <td><span th:text="${user.email}"></span></td>
 		  <td><span th:text="${user.gender}"></span></td>
-		
+		  <td>
+		  <a th:href='@{/user/edit/{id}(id=${user.id})}'>Edit</a>
+		  </td>
 	</tr>
 	</table>
 	<a href='/user/new'>New User</a>
