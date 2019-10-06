@@ -7,4 +7,5 @@ public interface UserRepository {
 	  User findOne(Long id);
 	  User save(User user);
 	  User update(User user);
+	  void deleteUser(Long id);
 }

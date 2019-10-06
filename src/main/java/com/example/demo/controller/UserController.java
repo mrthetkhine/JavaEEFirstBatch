@@ -38,24 +38,18 @@ public class UserController {
 	@GetMapping("/new")
 	public String newUser(Model model)
 	{
-		System.out.println("User/new Controller");
+		//System.out.println("User/new Controller");
 		User newUser = new User();
 		model.addAttribute("user", newUser);
 		
-		return "user/new";
-	}
-	@GetMapping("/edit/{id}")
-	public String editUser(@PathVariable Long id,Model model)
-	{
-		User newUser = this.userRepository.findOne(id);
-		model.addAttribute("user", newUser);
+		System.out.println("User/new Get");
 		
 		return "user/new";
-		
 	}
 	@PostMapping("/new")
 	public String createUser(@Valid User user,Errors errors)
 	{
+		System.out.println("User/new post");
 		if( errors.hasErrors())
 		{
 			System.out.println("Have validation error ");
@@ -76,4 +70,22 @@ public class UserController {
 		}
 		
 	}
+	@GetMapping("/edit/{id}")
+	public String editUser(@PathVariable Long id,Model model)
+	{
+		System.out.println("User/edit");
+		User newUser = this.userRepository.findOne(id);
+		model.addAttribute("user", newUser);
+		
+		return "user/new";
+		
+	}
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable Long id)
+	{
+		this.userRepository.deleteUser(id);
+		return "redirect:/user/list";
+		
+	}
+	
 }

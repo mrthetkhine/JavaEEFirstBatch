@@ -62,4 +62,12 @@ public class JdbcUserRepository implements UserRepository{
 			  return user;
 		
 	}
+
+	@Override
+	public void deleteUser(Long id) {
+		jdbc.update(
+			      "delete from user WHERE id=?",
+			      id);
+		
+	}
 }
