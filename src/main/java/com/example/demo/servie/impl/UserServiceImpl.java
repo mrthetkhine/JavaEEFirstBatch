@@ -32,4 +32,11 @@ public class UserServiceImpl implements UserService{
 		return dtos;
 	}
 
+	@Override
+	public void saveOrUpdate(UserDto user) {
+		User userEntity = user.getEntity();
+		this.userJpaRepository.save(userEntity);
+		
+	}
+
 }

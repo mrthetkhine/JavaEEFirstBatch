@@ -67,6 +67,16 @@ public class UserDto {
 		this.id = id;
 	}
 	
-	
+	public User getEntity()
+	{
+		User user = new User();
+		System.out.println("User id "+this.id);
+		user.setId(this.id);
+		user.setName(this.name);
+		user.setEmail(this.email);
+		user.setGender(this.gender);
+		
+		return user;
+	}
 	
 }

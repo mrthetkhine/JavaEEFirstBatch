@@ -6,4 +6,5 @@ import com.example.demo.model.*;
 
 public interface UserService {
 	List<UserDto> getAllUser();
+	void saveOrUpdate(UserDto user);
 }
