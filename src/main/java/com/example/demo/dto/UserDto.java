@@ -3,6 +3,8 @@ package com.example.demo.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.example.demo.model.User;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +33,13 @@ public class UserDto {
    public UserDto()
    {
 	   
+   }
+   public UserDto(User entity)
+   {
+	   this.id = entity.getId();
+	   this.name= entity.getName();
+	   this.email = entity.getEmail();
+	   this.gender = entity.getGender();
    }
    
 	public String getName() {

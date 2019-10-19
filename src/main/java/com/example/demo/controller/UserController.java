@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dao.UserJpaRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.dto.UserDto;
+import com.example.demo.servie.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -26,10 +28,13 @@ public class UserController {
 	@Autowired
 	private  UserRepository userRepository;
 	
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping("/list")
 	String userList(Model model){
 		
-		Iterable<UserDto> users = this.userRepository.findAll();
+		List<UserDto> users = this.userService.getAllUser();
 		model.addAttribute("users", users);
 		
 		System.out.println("User List Controller");
