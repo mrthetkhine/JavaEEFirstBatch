@@ -1,11 +1,11 @@
 package com.example.demo.dao;
 
-import com.example.demo.dto.User;
+import com.example.demo.dto.UserDto;
 
 public interface UserRepository {
-	  Iterable<User> findAll();
-	  User findOne(Long id);
-	  User save(User user);
-	  User update(User user);
+	  Iterable<UserDto> findAll();
+	  UserDto findOne(Long id);
+	  UserDto save(UserDto user);
+	  UserDto update(UserDto user);
 	  void deleteUser(Long id);
 }

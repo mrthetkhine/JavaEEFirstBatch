@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-public class User {
+public class UserDto {
 
 	Long id;
 	
@@ -21,14 +21,14 @@ public class User {
    
    String gender;
    
-   public User(Long id, String name, String email , String gender)
+   public UserDto(Long id, String name, String email , String gender)
    {
 	   this.id = id;
 	   this.name = name;
 	   this.email = email;
 	   this.gender = gender;
    }
-   public User()
+   public UserDto()
    {
 	   
    }

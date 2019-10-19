@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.User;
+import com.example.demo.dto.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +36,14 @@ public class HomController {
 	@GetMapping("/users")
 	String userList(Model model){
 		
-		List<User> users = new ArrayList<User>();
-		User user = new User();
+		List<UserDto> users = new ArrayList<UserDto>();
+		UserDto user = new UserDto();
 		user.setName("User one");
 		user.setEmail("userone@gmail.com");
 		
 		users.add(user);
 		
-		User user1 = new User();
+		UserDto user1 = new UserDto();
 		user1.setName("User 1");
 		user1.setEmail("user2@gmail.com");
 		
