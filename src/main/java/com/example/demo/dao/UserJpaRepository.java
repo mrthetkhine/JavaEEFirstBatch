@@ -9,3 +9,4 @@ import com.example.demo.model.User;;
 public interface UserJpaRepository extends JpaRepository<User, Long>{
 	  
 }
+ 
