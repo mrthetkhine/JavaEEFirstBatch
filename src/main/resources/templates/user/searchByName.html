@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User</title>
+<style>
+.validationError
+{
+	color:red;
+}
+</style>
+</head>
+<body>
+	<h1>Search User</h1>
+	<form th:object="${search}" method="POST"  action="/user/searchByName">
+		
+	  <p>Name: <input type="text" th:field="*{name}" th:value="${search.name}"></span>
+	  
+	  </p>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>
