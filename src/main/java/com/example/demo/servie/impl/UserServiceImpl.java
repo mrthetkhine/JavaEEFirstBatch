@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<UserDto> searchUserByName(String name) {
 		
-		List<User> users  = this.userJpaRepository.findByName(name);
+		List<User> users  = this.userJpaRepository.findByNameWithNativeQuery(name);
 		ArrayList<UserDto> dtos  = new ArrayList<UserDto>();
 		for(User user : users)
 		{
