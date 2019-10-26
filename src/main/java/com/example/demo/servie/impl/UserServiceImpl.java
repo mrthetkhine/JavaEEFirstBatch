@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.UserJpaRepository;
 import com.example.demo.dto.UserDto;
 import com.example.demo.dto.UserNameAndEmail;
+import com.example.demo.dto.UserSearch;
 import com.example.demo.model.User;
 import com.example.demo.servie.UserService;
+import com.example.demo.servie.specification.UserSpecification;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -51,13 +53,7 @@ public class UserServiceImpl implements UserService{
 		
 		List<User> users  = this.userJpaRepository.findByNameWithNativeQuery(name);
 		
-		ArrayList<UserDto> dtos  = new ArrayList<UserDto>();
-		for(User user : users)
-		{
-			System.out.println("Class "+user.getClass());
-			UserDto dto = new UserDto(user);
-			dtos.add(dto);
-		}
+		ArrayList<UserDto> dtos = entityListToDtos(users);
 		
 		List<UserNameAndEmail> userNameEmails = this.userJpaRepository.getAllUserNameAndEmail();
 		for(UserNameAndEmail user : userNameEmails)
@@ -72,6 +68,25 @@ public class UserServiceImpl implements UserService{
 	public int updateName(String name, Long id) {
 		
 		return this.userJpaRepository.updateName(name, id);
+	}
+
+	@Override
+	public List<UserDto> searchUserByNameOrEmail(UserSearch search) {
+	
+		List<User> users  =  this.userJpaRepository.findAll(UserSpecification.getUserByNameOrEmail(search));
+		ArrayList<UserDto> dtos = entityListToDtos(users);
+		return dtos;
+	}
+
+	private ArrayList<UserDto> entityListToDtos(List<User> users) {
+		ArrayList<UserDto> dtos  = new ArrayList<UserDto>();
+		for(User user : users)
+		{
+			System.out.println("Class "+user.getClass());
+			UserDto dto = new UserDto(user);
+			dtos.add(dto);
+		}
+		return dtos;
 	}
 
 }

@@ -140,7 +140,7 @@ public class UserController {
 		UserSearch param = new UserSearch();
 		model.addAttribute("search", param);
 		
-		List<UserDto> users = this.userService.searchUserByName(search.getName());
+		List<UserDto> users = this.userService.searchUserByNameOrEmail(search);
 		model.addAttribute("users", users);
 		
 		

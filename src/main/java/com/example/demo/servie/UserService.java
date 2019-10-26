@@ -2,6 +2,7 @@ package com.example.demo.servie;
 import java.util.List;
 
 import com.example.demo.dto.UserDto;
+import com.example.demo.dto.UserSearch;
 import com.example.demo.model.*;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
 	List<UserDto> searchUserByName(String name);
 	
 	int updateName(String name, Long id);
+	
+	List<UserDto> searchUserByNameOrEmail(UserSearch search);
 }
