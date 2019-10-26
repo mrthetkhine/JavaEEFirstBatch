@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService{
 		ArrayList<UserDto> dtos  = new ArrayList<UserDto>();
 		for(User user : users)
 		{
+			System.out.println("Class "+user.getClass());
 			UserDto dto = new UserDto(user);
 			dtos.add(dto);
 		}
@@ -61,9 +62,16 @@ public class UserServiceImpl implements UserService{
 		List<UserNameAndEmail> userNameEmails = this.userJpaRepository.getAllUserNameAndEmail();
 		for(UserNameAndEmail user : userNameEmails)
 		{
+			System.out.println("Class "+user.getClass());
 			System.out.println("Name "+ user.getName() + " Email "+user.getEmail());
 		}
 		return dtos;
+	}
+
+	@Override
+	public int updateName(String name, Long id) {
+		
+		return this.userJpaRepository.updateName(name, id);
 	}
 
 }

@@ -9,4 +9,6 @@ public interface UserService {
 	void saveOrUpdate(UserDto user);
 	void deleteById(Long id);
 	List<UserDto> searchUserByName(String name);
+	
+	int updateName(String name, Long id);
 }
