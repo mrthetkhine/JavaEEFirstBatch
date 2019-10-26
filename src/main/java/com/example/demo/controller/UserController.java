@@ -40,7 +40,7 @@ public class UserController {
 		
 		System.out.println("User List Controller");
 		
-		this.userService.updateName("TK", 1L);
+		//this.userService.updateName("TK", 1L);
 		return "user/users";
 	}
 	
@@ -115,6 +115,36 @@ public class UserController {
 		
 		
 		return "user/searchByName";
+		
+	}
+	@GetMapping("/searchByNameOrEmail")
+	public String searchByNameOrEmail(Model model)
+	{
+		System.out.println("Get searchByNameOrEmail");
+		UserSearch search = new UserSearch();
+		model.addAttribute("search", search);
+		
+		List<UserDto> users = new ArrayList<UserDto>();
+		model.addAttribute("users", users);
+		
+		return "user/searchByNameOrEmail";
+		
+	}
+	@PostMapping("/searchByNameOrEmail")
+	public String searchByNameOrEmailPost(UserSearch search,Model model)
+	{
+		System.out.println("Post searchByName");
+		System.out.println("Search name "+search.getName());
+		System.out.println("Search email "+search.getEmail());
+		
+		UserSearch param = new UserSearch();
+		model.addAttribute("search", param);
+		
+		List<UserDto> users = this.userService.searchUserByName(search.getName());
+		model.addAttribute("users", users);
+		
+		
+		return "user/searchByNameOrEmail";
 		
 	}
 }

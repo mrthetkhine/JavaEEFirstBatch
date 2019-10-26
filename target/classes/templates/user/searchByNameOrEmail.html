@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User</title>
+<style>
+.validationError
+{
+	color:red;
+}
+</style>
+</head>
+<body>
+	<h1>Search User</h1>
+	<form th:object="${search}" method="POST"  action="/user/searchByNameOrEmail">
+		
+	  <p>Name: <input type="text" th:field="*{name}" th:value="${search.name}"></span>
+	  
+	  </p>
+	  <p>Email: <input type="text" th:field="*{email}" th:value="${search.email}"></span>
+		<button type="submit">Submit</button>
+	</form>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Gender</th>
+				<th> Action</th>
+			</tr>
+		</thead>
+		<tr th:each="user: ${users}">
+			<td><span th:text="${user.id}"></span></td>
+		  <td><span th:text="${user.name}"></span></td>
+		  <td><span th:text="${user.email}"></span></td>
+		  <td><span th:text="${user.gender}"></span></td>
+		  <td>
+		  <a th:href='@{/user/edit/{id}(id=${user.id})}'>Edit</a>
+		  &nbsp;
+		  <a th:href='@{/user/delete/{id}(id=${user.id})}'>Delete</a>
+		  </td>
+	</tr>
+	</table>
+</body>
+</html>
