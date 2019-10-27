@@ -23,6 +23,8 @@ public class UserDto {
    
    String gender;
    
+   String course;
+   
    public UserDto(Long id, String name, String email , String gender)
    {
 	   this.id = id;
@@ -40,6 +42,7 @@ public class UserDto {
 	   this.name= entity.getName();
 	   this.email = entity.getEmail();
 	   this.gender = entity.getGender();
+	   this.course = entity.getCourse().getName();
    }
    
 	public String getName() {
@@ -77,6 +80,12 @@ public class UserDto {
 		user.setGender(this.gender);
 		
 		return user;
+	}
+	public String getCourse() {
+		return course;
+	}
+	public void setCourse(String course) {
+		this.course = course;
 	}
 	
 }

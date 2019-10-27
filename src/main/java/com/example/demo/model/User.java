@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -38,6 +40,10 @@ public class User implements Serializable {
 	@Column(name="gender")
     String gender;
    
+	@ManyToOne
+	@JoinColumn(name = "course_id")
+	private Course course;
+	
    public User(Long id, String name, String email , String gender)
    {
 	   this.id = id;
@@ -45,6 +51,9 @@ public class User implements Serializable {
 	   this.email = email;
 	   this.gender = gender;
    }
+   
+
+  
    public User()
    {
 	   
@@ -73,6 +82,18 @@ public class User implements Serializable {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+
+
+	public Course getCourse() {
+		return course;
+	}
+
+
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	
 	
