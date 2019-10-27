@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.UserJpaRepository;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<UserDto> getAllUser() {
 		
-		List<User> users = userJpaRepository.findAll();
+		List<User> users = userJpaRepository.findAll(Sort.by("name").descending());
 		
 		List<UserDto> dtos = new ArrayList<UserDto>();
 		for(User user : users)
