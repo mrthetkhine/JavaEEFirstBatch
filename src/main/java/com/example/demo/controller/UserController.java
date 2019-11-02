@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -15,10 +16,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dao.CourseJpaRepository;
 import com.example.demo.dao.UserJpaRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.dto.UserDto;
 import com.example.demo.dto.UserSearch;
+import com.example.demo.model.Course;
+import com.example.demo.model.User;
 import com.example.demo.servie.UserService;
 
 @Controller
@@ -32,6 +36,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private CourseJpaRepository courseRepository;
+	
 	@GetMapping("/list")
 	String userList(Model model){
 		
@@ -41,6 +48,16 @@ public class UserController {
 		System.out.println("User List Controller");
 		
 		//this.userService.updateName("TK", 1L);
+		
+		Course course = this.courseRepository.getOne(1L);
+		
+		System.out.println("Course "+course.getName());
+		Set<User> courseUsers = course.getUsers();
+		for(User usr : courseUsers)
+		{
+			System.out.println("User in course "+usr.getName());
+		}
+		
 		return "user/users";
 	}
 	
