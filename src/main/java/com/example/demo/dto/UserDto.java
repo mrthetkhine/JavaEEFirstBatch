@@ -3,6 +3,7 @@ package com.example.demo.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.example.demo.model.Course;
 import com.example.demo.model.User;
 
 import lombok.Data;
@@ -22,6 +23,8 @@ public class UserDto {
    String email;
    
    String gender;
+   
+   Long courseId;
    
    String course;
    
@@ -79,6 +82,11 @@ public class UserDto {
 		user.setEmail(this.email);
 		user.setGender(this.gender);
 		
+		Course course = new Course();
+		course.setId(this.getCourseId());
+		
+		user.setCourse(course);
+		
 		return user;
 	}
 	public String getCourse() {
@@ -87,5 +95,12 @@ public class UserDto {
 	public void setCourse(String course) {
 		this.course = course;
 	}
+	public Long getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+	
 	
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +25,8 @@ import com.example.demo.dto.UserSearch;
 import com.example.demo.model.Course;
 import com.example.demo.model.User;
 import com.example.demo.servie.UserService;
-
+import com.example.demo.servie.CourseService;
+import com.example.demo.dto.CourseDto;
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -36,8 +38,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private CourseJpaRepository courseRepository;
+	
+	@Autowired 
+	CourseService courseService;
 	
 	@GetMapping("/list")
 	String userList(Model model){
@@ -49,15 +52,6 @@ public class UserController {
 		
 		//this.userService.updateName("TK", 1L);
 		
-		Course course = this.courseRepository.getOne(1L);
-		
-		System.out.println("Course "+course.getName());
-		Set<User> courseUsers = course.getUsers();
-		for(User usr : courseUsers)
-		{
-			System.out.println("User in course "+usr.getName());
-		}
-		
 		return "user/users";
 	}
 	
@@ -68,6 +62,8 @@ public class UserController {
 		UserDto newUser = new UserDto();
 		model.addAttribute("user", newUser);
 		
+		List<CourseDto> courses = this.courseService.getAllCourse();
+		model.addAttribute("courses", courses);
 		System.out.println("User/new Get");
 		
 		return "user/new";
@@ -76,6 +72,7 @@ public class UserController {
 	public String createUser(@Valid UserDto user,Errors errors)
 	{
 		System.out.println("User/new post");
+		System.out.println("Course "+user.getCourseId());
 		if( errors.hasErrors())
 		{
 			System.out.println("Have validation error ");
