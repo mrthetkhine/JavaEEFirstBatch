@@ -41,7 +41,7 @@ public class User implements Serializable {
 	@Column(name="gender")
     String gender;
    
-	@ManyToOne( cascade = CascadeType.ALL)
+	@ManyToOne( /*cascade = CascadeType.ALL*/)
 	@JoinColumn(name = "course_id")
 	private Course course;
 	
