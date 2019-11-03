@@ -83,13 +83,15 @@ public class UserDto {
 		user.setEmail(this.email);
 		user.setGender(this.gender);
 		
+		/*
 		Course course = new Course();
 		course.setId(this.getCourseId());
-		
+		user.setCourse(course);
+		*/
 		//course.setName("WebDev");
 		//course.setDescription("web Dev");
 		
-		user.setCourse(course);
+		
 		
 		return user;
 	}

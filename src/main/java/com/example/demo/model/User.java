@@ -52,8 +52,6 @@ public class User implements Serializable {
 	   this.email = email;
 	   this.gender = gender;
    }
-   
-
   
    public User()
    {
