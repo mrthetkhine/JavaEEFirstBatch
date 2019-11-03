@@ -86,6 +86,9 @@ public class UserDto {
 		Course course = new Course();
 		course.setId(this.getCourseId());
 		
+		//course.setName("WebDev");
+		//course.setDescription("web Dev");
+		
 		user.setCourse(course);
 		
 		return user;

@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class User implements Serializable {
 	@Column(name="gender")
     String gender;
    
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL)
 	@JoinColumn(name = "course_id")
 	private Course course;
 	
