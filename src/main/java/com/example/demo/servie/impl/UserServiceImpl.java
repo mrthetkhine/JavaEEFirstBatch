@@ -90,4 +90,12 @@ public class UserServiceImpl implements UserService{
 		return dtos;
 	}
 
+	@Override
+	public UserDto getById(Long id) {
+		User user = this.userJpaRepository.getOne(id);
+		//System.out.println("Course "+user.getCourse());
+		UserDto dto = new UserDto(user);
+		return dto;
+	}
+
 }

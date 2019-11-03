@@ -32,8 +32,11 @@
 			</select>
 		</p>
 		Course <select th:field="*{courseId}">
-			<option th:each="course: ${courses}" th:value="${course.id}" th:text="${course.name}"/>
-			</select>
+				<option th:each="course: ${courses}" 
+						th:value="${course.id}" 
+						th:text="${course.name}"
+						th:selected="${course.id == user.courseId}"/>
+			   </select>
 		</p>
 		<button type="submit">Submit</button>
 	</form>

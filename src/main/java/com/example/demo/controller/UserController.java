@@ -35,6 +35,9 @@ public class UserController {
 	@Autowired
 	private  UserRepository userRepository;
 	
+	@Autowired 
+	private UserJpaRepository userJpaRepository;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -89,8 +92,12 @@ public class UserController {
 	public String editUser(@PathVariable Long id,Model model)
 	{
 		System.out.println("User/edit");
-		UserDto newUser = this.userRepository.findOne(id);
+		UserDto newUser = this.userService.getById(id);
 		model.addAttribute("user", newUser);
+		
+		System.out.println("Edit user course Id "+ newUser.getCourseId());
+		List<CourseDto> courses = this.courseService.getAllCourse();
+		model.addAttribute("courses", courses);
 		
 		return "user/new";
 		

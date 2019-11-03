@@ -46,6 +46,7 @@ public class UserDto {
 	   this.email = entity.getEmail();
 	   this.gender = entity.getGender();
 	   this.course = entity.getCourse().getName();
+	   this.courseId = entity.getCourse().getId();
    }
    
 	public String getName() {
