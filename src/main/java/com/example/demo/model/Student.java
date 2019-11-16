@@ -42,7 +42,7 @@ public class Student implements Serializable {
     @JoinTable(name = "student_course",
         joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"))
-    private Set<Course> courses;
+    private Set<StdCourse> courses;
 
 	public Long getId() {
 		return id;
@@ -60,11 +60,11 @@ public class Student implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Course> getCourses() {
+	public Set<StdCourse> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(Set<Course> courses) {
+	public void setCourses(Set<StdCourse> courses) {
 		this.courses = courses;
 	}
 	
