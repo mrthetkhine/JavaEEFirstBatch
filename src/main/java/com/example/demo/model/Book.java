@@ -23,8 +23,8 @@ public class Book implements Serializable {
 	@Column(name="Id")
 	Long id;
 	
-	@Column(name="name")
-    String name;
+	@Column(name="title")
+    String title;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
@@ -38,12 +38,14 @@ public class Book implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	
+
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public BookDetail getBookDetail() {
