@@ -27,7 +27,7 @@ public class Book implements Serializable {
     String title;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
+    @JoinColumn(name="book_detail_id")
     private BookDetail bookDetail;
 
 	public Long getId() {

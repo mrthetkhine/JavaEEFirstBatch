@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.BookJpaRepository;
 import com.example.demo.dao.StudentJpaRepository;
 import com.example.demo.dto.UserDto;
+import com.example.demo.model.Book;
+import com.example.demo.model.BookDetail;
 import com.example.demo.model.Course;
 import com.example.demo.model.StdCourse;
 import com.example.demo.model.Student;
@@ -21,6 +24,9 @@ public class HomController {
 	
 	@Autowired
 	StudentJpaRepository studentRepository;
+	
+	@Autowired
+	BookJpaRepository bookRepository;
 	
 	public void testManyToMany()
 	{
@@ -64,6 +70,20 @@ public class HomController {
 		}
 		
 	}
+	public void saveOneToOne()
+	{
+		Book b1 = new Book();
+	
+		b1.setTitle("PHP");
+		
+		BookDetail b1Detail = new BookDetail();
+		b1Detail.setContent("PHP is Blah Blah");
+		
+		b1.setBookDetail(b1Detail);
+		
+		this.bookRepository.save(b1);
+		
+	}
 	@GetMapping("/")
 	String home(Model model){
 		
@@ -71,7 +91,8 @@ public class HomController {
 		
 		System.out.println("Home Controller");
 		//testManyToMany();
-		this.queryStudentOne();
+		//this.queryStudentOne();
+		this.saveOneToOne();
 		return "home";
 	}
 	/*

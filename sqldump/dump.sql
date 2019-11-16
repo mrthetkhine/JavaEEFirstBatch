@@ -26,9 +26,10 @@ DROP TABLE IF EXISTS `book`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_detail_id` int(11) DEFAULT NULL,
   `title` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +38,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (1,1,'Java'),(2,2,'PHP');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +53,7 @@ CREATE TABLE `book_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,6 +62,7 @@ CREATE TABLE `book_detail` (
 
 LOCK TABLES `book_detail` WRITE;
 /*!40000 ALTER TABLE `book_detail` DISABLE KEYS */;
+INSERT INTO `book_detail` VALUES (1,'Java is Blah Blah'),(2,'PHP is Blah Blah');
 /*!40000 ALTER TABLE `book_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,4 +210,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-16 17:12:19
+-- Dump completed on 2019-11-16 17:34:12
