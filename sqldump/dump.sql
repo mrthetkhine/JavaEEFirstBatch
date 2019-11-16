@@ -43,6 +43,29 @@ INSERT INTO `course` VALUES (1,'JavaSE','Java SE'),(3,'WebDev','web Dev');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `std_course`
+--
+
+DROP TABLE IF EXISTS `std_course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `std_course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `std_course`
+--
+
+LOCK TABLES `std_course` WRITE;
+/*!40000 ALTER TABLE `std_course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `std_course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `student`
 --
 
@@ -79,7 +102,7 @@ CREATE TABLE `student_course` (
   PRIMARY KEY (`id`),
   KEY `fk_student_id_idx` (`student_id`),
   KEY `fk_course_id_idx` (`course_id`),
-  CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `std_course` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -135,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-16 16:27:23
+-- Dump completed on 2019-11-16 16:36:30
