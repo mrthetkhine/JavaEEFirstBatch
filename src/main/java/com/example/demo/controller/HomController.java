@@ -9,6 +9,7 @@ import com.example.demo.model.Student;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,22 @@ public class HomController {
 		this.studentRepository.save(st2);
 		
 	}
+	public void queryStudentOne()
+	{
+		Student stud1 = this.studentRepository.getOne(1L);
+		Set<StdCourse> courses = stud1.getCourses();
+		StdCourse c3 = new StdCourse();
+		c3.setName( "Course 3");
+		
+		//courses.add(c3);
+		//this.studentRepository.save(stud1);
+		
+		for(StdCourse course : courses)
+		{
+			System.out.println("st1 course "+course.getName());
+		}
+		
+	}
 	@GetMapping("/")
 	String home(Model model){
 		
@@ -54,6 +71,7 @@ public class HomController {
 		
 		System.out.println("Home Controller");
 		//testManyToMany();
+		this.queryStudentOne();
 		return "home";
 	}
 	/*
