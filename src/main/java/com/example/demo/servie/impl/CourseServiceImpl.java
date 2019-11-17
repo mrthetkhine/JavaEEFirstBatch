@@ -20,6 +20,8 @@ public class CourseServiceImpl implements CourseService {
 	
 	@Override
 	public List<CourseDto> getAllCourse() {
+		
+		System.out.println("get all course");
 		List<Course> courses = this.courseRepository.findAll();
 		
 		List<CourseDto> dtos = entityToDtoList(courses);

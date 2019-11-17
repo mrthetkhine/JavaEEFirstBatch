@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public List<UserDto> getAllUser() {
-		
+		System.out.println("get All user");
 		List<User> users = userJpaRepository.findAll(Sort.by("name").descending());
 		
 		//User user1 = this.userJpaRepository.getOne(2L);
