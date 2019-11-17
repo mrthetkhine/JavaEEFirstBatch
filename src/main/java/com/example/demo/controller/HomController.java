@@ -8,6 +8,8 @@ import com.example.demo.model.BookDetail;
 import com.example.demo.model.Course;
 import com.example.demo.model.StdCourse;
 import com.example.demo.model.Student;
+import com.example.demo.servie.CourseService;
+import com.example.demo.servie.UserService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,6 +31,12 @@ public class HomController {
 	
 	@Autowired
 	BookJpaRepository bookRepository;
+	
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired
+	UserService userService;
 	
 	public void testManyToMany()
 	{
@@ -95,10 +103,13 @@ public class HomController {
 		//testManyToMany();
 		//this.queryStudentOne();
 		//this.saveOneToOne();
-		Student st1 = this.studentRepository.getOne(1L);
-		model.addAttribute("student", st1);
-		throw new Exception("Exception");
-		//return "home";
+		
+		//throw new Exception("Exception");
+		
+		this.courseService.getAllCourse();
+		this.userService.getAllUser();
+		
+		return "home";
 	}
 	/*
 	@GetMapping("/user")
