@@ -108,6 +108,7 @@ public class HomController {
 		
 		this.courseService.getAllCourse();
 		this.userService.getAllUser();
+		this.userService.getById(-1L);
 		
 		return "home";
 	}
