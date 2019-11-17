@@ -6,8 +6,22 @@
 </head>
 <body>
 	<h1>Welcome to...</h1>
-	<span th:text="${message+ (1+2)}"></span>
+	
 	<img th:src="@{/images/java.png}" />
 	
+	Course <span th:text="${student.courses[1].name}">
+	Hello11 <span th:text="${student.name}">
+	<p>Next</p>
+	Course <span th:text="${student.courses[0].name"}>
+	<div th:object="${student}">
+	  <tr th:each="course: ${courses}">
+		
+		  <td><span th:text="${course.name}"></span></td>
+		 
+		  
+		
+		</tr>
+	  
+	</div>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class Student implements Serializable {
 	@Column(name="name")
     String name;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "student_course",
         joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"))

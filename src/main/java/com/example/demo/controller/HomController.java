@@ -17,7 +17,9 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomController {
@@ -85,15 +87,18 @@ public class HomController {
 		
 	}
 	@GetMapping("/")
-	String home(Model model){
+	String home(Model model) throws Exception{
 		
 		model.addAttribute("message", "Hello World");
 		
 		System.out.println("Home Controller");
 		//testManyToMany();
 		//this.queryStudentOne();
-		this.saveOneToOne();
-		return "home";
+		//this.saveOneToOne();
+		Student st1 = this.studentRepository.getOne(1L);
+		model.addAttribute("student", st1);
+		throw new Exception("Exception");
+		//return "home";
 	}
 	/*
 	@GetMapping("/user")
@@ -128,5 +133,16 @@ public class HomController {
 		
 		System.out.println("User List Controller");
 		return "users";
+	}
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleException(Exception ex)
+	{
+		System.out.println("Exception handler run");
+		ex.printStackTrace();
+	    //Do something additional if required
+	    ModelAndView modelAndView = new ModelAndView();
+	    modelAndView.setViewName("error");
+	    modelAndView.addObject("message", ex.getMessage());
+	    return modelAndView;
 	}
 }
