@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+
 import com.example.demo.dao.BookJpaRepository;
 import com.example.demo.dao.StudentJpaRepository;
 import com.example.demo.dto.UserDto;
@@ -37,6 +38,7 @@ public class HomController {
 	
 	@Autowired
 	UserService userService;
+	
 	
 	public void testManyToMany()
 	{
@@ -93,6 +95,16 @@ public class HomController {
 		
 		this.bookRepository.save(b1);
 		
+	}
+	@GetMapping("/book")
+	String book(Model model) throws Exception{
+		
+		model.addAttribute("message", "Hello World");
+		
+		System.out.println("Home Controller");
+		
+	
+		return "home";
 	}
 	@GetMapping("/")
 	String home(Model model) throws Exception{
