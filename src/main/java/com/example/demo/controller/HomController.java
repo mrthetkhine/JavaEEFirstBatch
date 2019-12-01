@@ -118,9 +118,9 @@ public class HomController {
 		
 		//throw new Exception("Exception");
 		
-		this.courseService.getAllCourse();
-		this.userService.getAllUser();
-		this.userService.getById(-1L);
+		//this.courseService.getAllCourse();
+		//this.userService.getAllUser();
+		//this.userService.getById(-1L);
 		
 		return "home";
 	}
