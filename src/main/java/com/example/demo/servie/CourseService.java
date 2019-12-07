@@ -5,4 +5,5 @@ import com.example.demo.dto.CourseDto;
 
 public interface CourseService {
 	List<CourseDto> getAllCourse();
+	CourseDto createNewCourse(CourseDto course);
 }

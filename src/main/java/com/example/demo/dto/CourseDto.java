@@ -1,13 +1,21 @@
 package com.example.demo.dto;
+import java.io.Serializable;
+
 import com.example.demo.model.*;
-public class CourseDto {
+public class CourseDto implements Serializable{
 
 	Long id;
 	String name;
 	String description;
 	
+	public CourseDto()
+	{
+		
+	}
+	
 	public CourseDto(Course entity)
 	{
+		System.out.println("Course Dto "+entity);
 		this.id = entity.getId();
 		this.name = entity.getName();
 		this.description = entity.getDescription();
@@ -31,6 +39,17 @@ public class CourseDto {
 		this.description = description;
 	}
 	
-	
+	public Course getEntity()
+	{
+		Course course = new Course();
+		if(this.id != null)
+		{
+			course.setId(id);
+		}
+		course.setName(this.name);
+		course.setDescription(this.description);
+		
+		return course;
+	}
 	
 }
