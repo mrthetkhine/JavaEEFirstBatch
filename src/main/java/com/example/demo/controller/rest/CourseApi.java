@@ -2,6 +2,7 @@ package com.example.demo.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,15 @@ public class CourseApi {
 	@Autowired
 	CourseService courseService;
 	
-	@GetMapping(path="/", produces = "application/json")
+	@GetMapping( produces = "application/json")
     public List<CourseDto> getAllCourse() 
     {
         return this.courseService.getAllCourse();
+    }
+	@GetMapping(path="/{id}", produces = "application/json")
+    public CourseDto getCourse(@PathVariable("id") Long id) 
+    {
+        return this.courseService.getCourseById(id);
     }
 	@PostMapping
 	public CourseDto newCourse(@RequestBody CourseDto dto)

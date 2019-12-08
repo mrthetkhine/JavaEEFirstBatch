@@ -47,4 +47,12 @@ public class CourseServiceImpl implements CourseService {
 		return new CourseDto(course);
 	}
 
+
+	@Override
+	public CourseDto getCourseById(Long id) {
+		Course course = this.courseRepository.getOne(id);
+		CourseDto dto = new CourseDto(course);
+		return dto;
+	}
+
 }
