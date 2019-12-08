@@ -1,6 +1,7 @@
 package com.example.demo.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,10 @@ public class CourseApi {
 		courseDto.setId(id);
 		System.out.println("Course dto in API "+courseDto);
 		return this.courseService.updateCourse(courseDto);
+	}
+	@DeleteMapping(path="/{id}")
+	public void deleteCourse(@PathVariable("id") Long id)
+	{
+		this.courseService.deleteCourseById(id);
 	}
 }

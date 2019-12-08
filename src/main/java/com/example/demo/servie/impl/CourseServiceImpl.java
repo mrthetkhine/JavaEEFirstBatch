@@ -63,4 +63,11 @@ public class CourseServiceImpl implements CourseService {
 		return new CourseDto(savedEntity);
 	}
 
+
+	@Override
+	public void deleteCourseById(Long id) {
+		this.courseRepository.deleteById(id);
+		
+	}
+
 }
