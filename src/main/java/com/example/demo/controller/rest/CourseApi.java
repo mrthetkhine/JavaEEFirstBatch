@@ -37,9 +37,10 @@ public class CourseApi {
 		System.out.println("Course dto in API "+dto);
 		return this.courseService.createNewCourse(dto);
 	}
-	@PutMapping
-	public CourseDto updateCourse(@RequestBody CourseDto courseDto)
+	@PutMapping(path="/{id}")
+	public CourseDto updateCourse(@PathVariable("id") Long id,@RequestBody CourseDto courseDto)
 	{
+		courseDto.setId(id);
 		System.out.println("Course dto in API "+courseDto);
 		return this.courseService.updateCourse(courseDto);
 	}
