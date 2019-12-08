@@ -2,6 +2,7 @@ package com.example.demo.dto;
 import java.io.Serializable;
 
 import com.example.demo.model.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CourseDto implements Serializable{
 
 	Long id;
@@ -39,6 +40,7 @@ public class CourseDto implements Serializable{
 		this.description = description;
 	}
 	
+	@JsonIgnore
 	public Course getEntity()
 	{
 		Course course = new Course();
