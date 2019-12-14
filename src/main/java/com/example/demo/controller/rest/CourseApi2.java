@@ -17,6 +17,8 @@ import com.example.demo.dto.ErrorMessage;
 import com.example.demo.servie.CourseService;
 import java.util.List;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/api/v2/course")
 public class CourseApi2 {
@@ -49,7 +51,7 @@ public class CourseApi2 {
         
     }
 	@PostMapping
-	public CourseDto newCourse(@RequestBody CourseDto dto)
+	public CourseDto newCourse(@Valid @RequestBody CourseDto dto)
 	{
 		System.out.println("Course dto in API "+dto);
 		return this.courseService.createNewCourse(dto);

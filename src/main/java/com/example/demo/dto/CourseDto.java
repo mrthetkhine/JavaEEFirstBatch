@@ -1,12 +1,21 @@
 package com.example.demo.dto;
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.example.demo.model.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CourseDto implements Serializable{
 
 	Long id;
+	
+	@NotNull
+	@Size(min=5, message="name must be at least 5 characters long")
 	String name;
+	
+	@NotNull
+	@Size(min=5, message="Description must be at least 5 characters long")
 	String description;
 	
 	public CourseDto()
