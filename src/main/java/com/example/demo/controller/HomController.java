@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.BookJpaRepository;
 import com.example.demo.dao.StudentJpaRepository;
+import com.example.demo.dto.CourseDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.model.Book;
 import com.example.demo.model.BookDetail;
@@ -103,6 +104,20 @@ public class HomController {
 		
 		System.out.println("Home Controller");
 		
+	
+		return "home";
+	}
+	@GetMapping("/courseTest")
+	String course(Model model) throws Exception{
+		
+		model.addAttribute("message", "Hello World");
+		
+		System.out.println("Home Controller");
+		List<CourseDto> courseDtos = this.courseService.getAllCourse();
+		for(CourseDto dto : courseDtos)
+		{
+			System.out.println("Course "+dto.getName());
+		}
 	
 		return "home";
 	}

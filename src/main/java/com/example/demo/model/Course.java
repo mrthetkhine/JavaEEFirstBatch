@@ -19,20 +19,12 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+import com.example.demo.model.common.*;
 @Entity
 @Table(name="course")
-public class Course implements Serializable {
+public class Course extends BaseEntity {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Id")
-	Long id;
+	
 	
 	@Column(name="name")
     String name;
@@ -43,14 +35,7 @@ public class Course implements Serializable {
 	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<User> users;
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

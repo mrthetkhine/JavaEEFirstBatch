@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dao.CourseJpaRepository;
+
 import com.example.demo.dao.UserJpaRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.dto.UserDto;
