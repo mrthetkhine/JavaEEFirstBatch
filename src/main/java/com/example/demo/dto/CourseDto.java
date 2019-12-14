@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.example.demo.dto.validation.ValidCourseName;
 import com.example.demo.model.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CourseDto implements Serializable{
@@ -12,6 +13,7 @@ public class CourseDto implements Serializable{
 	
 	@NotNull
 	@Size(min=5, message="name must be at least 5 characters long")
+	@ValidCourseName( message="name must begin with upper case character")
 	String name;
 	
 	@NotNull
