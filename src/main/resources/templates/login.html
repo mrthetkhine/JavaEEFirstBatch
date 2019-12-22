@@ -4,7 +4,7 @@
   </head>
   <body>
     <h1>Login page</h1>
-    <p th:if="${loginError}" class="error">Wrong user or password</p>
+    <p th:if="${error}" class="error">Wrong user or password</p>
     <form th:action="@{/j_spring_security_check}" method="post">
       <label for="name">Username</label>:
       <input type="text" id="name" name="name" autofocus="autofocus" /> <br />
