@@ -208,6 +208,12 @@ public class HomController {
 		System.out.println("User List Controller");
 		return "users";
 	}
+	@GetMapping("/admin")
+	String admin(Model model){
+		
+		System.out.println("Admin route");
+		return "admin";
+	}
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleException(Exception ex)
 	{
