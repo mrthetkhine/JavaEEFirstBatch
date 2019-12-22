@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -154,6 +155,40 @@ public class HomController {
 	*/
 	@GetMapping("/users")
 	String userList(Model model){
+		
+		List<UserDto> users = new ArrayList<UserDto>();
+		UserDto user = new UserDto();
+		user.setName("User one");
+		user.setEmail("userone@gmail.com");
+		
+		users.add(user);
+		
+		UserDto user1 = new UserDto();
+		user1.setName("User 1");
+		user1.setEmail("user2@gmail.com");
+		
+		users.add(user1);
+		
+		model.addAttribute("users", users);
+		
+		System.out.println("User List Controller");
+		return "users";
+	}
+	@GetMapping("/login")
+	String login(Model model){
+		System.out.println("Login get");
+		
+		return "login";
+	}
+	@PostMapping("/login")
+	String loginPost(Model model){
+		System.out.println("Login post");
+
+		
+		return "login";
+	}
+	@GetMapping("/userAccountInfo")
+	String page(Model model){
 		
 		List<UserDto> users = new ArrayList<UserDto>();
 		UserDto user = new UserDto();

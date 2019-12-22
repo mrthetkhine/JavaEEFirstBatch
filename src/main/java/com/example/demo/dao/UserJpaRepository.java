@@ -17,8 +17,10 @@ import com.example.demo.model.User;;
 
 public interface UserJpaRepository extends JpaRepository<User, Long>,JpaSpecificationExecutor<User>{	
 	
+	User findByName(String username);
+	
 	@Query("FROM User WHERE name LIKE CONCAT('%',:name,'%') ")
-	List<User> findByName(@Param("name")String name);
+	List<User> findUsersByName(@Param("name")String name);
 	
 	@Query(value="SELECT * FROM user WHERE name LIKE CONCAT('%',:name,'%') ",nativeQuery=true)
 	List<User> findByNameWithNativeQuery(@Param("name")String name);
