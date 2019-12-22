@@ -19,11 +19,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -153,6 +155,7 @@ public class HomController {
 		return "user";
 	}
 	*/
+	@Secured({ "ROLE_ADMIN"})
 	@GetMapping("/users")
 	String userList(Model model){
 		
@@ -175,9 +178,9 @@ public class HomController {
 		return "users";
 	}
 	@GetMapping("/login")
-	String login(Model model){
+	String login(Model model,@RequestParam(value = "error",required = false) Boolean error){
 		System.out.println("Login get");
-		
+		model.addAttribute("error", error);
 		return "login";
 	}
 	@PostMapping("/login")
