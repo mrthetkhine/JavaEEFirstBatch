@@ -1,6 +1,8 @@
 package com.example.demo.dto;
 
-public class ItemDto {
+import java.io.Serializable;
+
+public class ItemDto implements Serializable{
 	String name;
 
 	public String getName() {

@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -192,10 +194,20 @@ public class HomController {
 		return "addToCart";
 	}
 	@PostMapping("/addToCart")
-	String addToCart(Model model, ItemDto itemDto){
+	String addToCart(Model model, ItemDto itemDto,HttpSession session){
 		System.out.println("addToCart post "+itemDto.getName());
 		ItemDto item = new ItemDto();
 		model.addAttribute("item", item);
+		List<ItemDto> items = (List<ItemDto>) session.getAttribute("cartItems");
+
+		if (items == null) {
+			items = new ArrayList<>();
+		}
+		items.add(itemDto);
+		session.setAttribute("cartItems", items);
+		System.out.println("Item count "+items.size());
+		
+		model.addAttribute("items", items);
 		return "addToCart";
 	}
 	

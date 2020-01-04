@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>User</title>
+<title>Add to cart</title>
 </head>
 <body>
-	<h1>User</h1>
+	<h1>Add to cart</h1>
 	<form action="/addToCart" method="post">
 		<div th:object="${item}">
 		  <p>Name: <input th:text="*{name}" name='name'></input>.</p>
@@ -15,6 +15,18 @@
 		<button type="submit">Add To Cart</button>
 	</form>
 	
-	
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				
+			</tr>
+		</thead>
+		<tr th:each="item: ${items}">
+		
+		  <td><span th:text="${item.name}"></span></td>
+		
+		</tr>
+	</table>
 </body>
 </html>
