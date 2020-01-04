@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.dao.BookJpaRepository;
 import com.example.demo.dao.StudentJpaRepository;
 import com.example.demo.dto.CourseDto;
+import com.example.demo.dto.ItemDto;
 import com.example.demo.dto.UserDto;
 import com.example.demo.model.Book;
 import com.example.demo.model.BookDetail;
@@ -183,6 +184,21 @@ public class HomController {
 		model.addAttribute("error", error);
 		return "login";
 	}
+	@GetMapping("/addToCart")
+	String addToCart(Model model){
+		System.out.println("addToCart get");
+		ItemDto item = new ItemDto();
+		model.addAttribute("item", item);
+		return "addToCart";
+	}
+	@PostMapping("/addToCart")
+	String addToCart(Model model, ItemDto itemDto){
+		System.out.println("addToCart post "+itemDto.getName());
+		ItemDto item = new ItemDto();
+		model.addAttribute("item", item);
+		return "addToCart";
+	}
+	
 	@PostMapping("/login")
 	String loginPost(Model model){
 		System.out.println("Login post");
