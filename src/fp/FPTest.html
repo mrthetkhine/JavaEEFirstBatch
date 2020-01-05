@@ -1,24 +1,28 @@
 <html>
     <script>
-        var arr=[1,4,5,7 ];
+        var arr=[1,2,4,5,7 ];
 
         var square = [];
+        var sum = 0;
         for(var i=0; i< arr.length;i++)
         {
             var sq = arr[i] * arr[i];
             if( sq %2 == 0)
             {
+               
+                sum += sq;
                 square.push(sq);
             }
-            
         }
+        console.log("Sum "+sum);
         console.log("Square ",square);
 
         var even = a => a % 2 ==0;
         var odd = a => !even(a);
         console.log("Even ", even(3));
         var squareFP = arr.map(ele => ele * ele)
-                          .filter( even );
+                          .filter( even )
+                          .reduce( (a,b)=> a + b);
         console.log("Square with fp ",squareFP);
     </script>
 
