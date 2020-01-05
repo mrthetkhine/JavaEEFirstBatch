@@ -1,0 +1,25 @@
+<html>
+    <script>
+        var arr=[1,4,5,7 ];
+
+        var square = [];
+        for(var i=0; i< arr.length;i++)
+        {
+            var sq = arr[i] * arr[i];
+            if( sq %2 == 0)
+            {
+                square.push(sq);
+            }
+            
+        }
+        console.log("Square ",square);
+
+        var even = a => a % 2 ==0;
+        var odd = a => !even(a);
+        console.log("Even ", even(3));
+        var squareFP = arr.map(ele => ele * ele)
+                          .filter( even );
+        console.log("Square with fp ",squareFP);
+    </script>
+
+</html>
